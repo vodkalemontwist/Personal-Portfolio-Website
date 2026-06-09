@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navbar */}
-      <nav className="fixed top-0 w-full border-b border-white/10 bg-black/80 backdrop-blur-md">
+      <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <h1 className="text-xl font-bold text-[#D4A574]">
             Fiea
@@ -39,7 +39,7 @@ function App() {
     <img
       src={profile}
       alt="Raffi Fuad Hilmy"
-      className="relative h-60 w-60 rounded-full object-cover border border-white/20"
+      className="relative h-64 w-64 rounded-full object-cover border border-white/20"
     />
   </div>
 
@@ -60,18 +60,23 @@ function App() {
   </p>
 
   <div className="mt-8 flex gap-4">
-    <button className="rounded-xl bg-[#D4A574] px-6 py-3 font-medium text-black transition hover:scale-105 hover:brightness-110">
+    <a
+      href="#projects"
+      className="rounded-xl bg-[#D4A574] px-6 py-3 font-medium text-black transition hover:scale-105 hover:brightness-110"
+    >
       View Projects
-    </button>
-
-    <button className="rounded-xl border border-white/20 px-6 py-3 transition hover:bg-white/10 hover:scale-105">
+    </a>
+    <a
+      href="#travel"
+      className="rounded-xl border border-white/20 px-6 py-3 transition hover:bg-white/10 hover:scale-105"
+    >
       Explore
-    </button>
+    </a>
    </div> 
       </section>
       <section
   id="about"
-  className="mx-auto max-w-6xl px-6 py-32"
+  className="mx-auto max-w-6xl px-6 py-32 scroll-mt-24"
 >
   <div className="mb-12">
     <p className="mb-3 text-[#D4A574]">ABOUT ME</p>
@@ -117,6 +122,148 @@ function App() {
     </div>
   </div>
 </section>
+<section
+  id="projects"
+  className="mx-auto max-w-6xl px-6 py-32 scroll-mt-24"
+>
+  <div className="mb-12">
+    <p className="mb-3 text-[#D4A574]">PROJECTS</p>
+
+    <h2 className="max-w-3xl text-4xl font-bold leading-tight">
+      Things I've built and continue to improve.
+    </h2>
+  </div>
+
+  <div className="grid gap-6 md:grid-cols-2">
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+      <h3 className="mb-2 text-2xl font-semibold">
+        Personal Portfolio Website
+      </h3>
+
+      <p className="mb-4 text-sm text-[#D4A574]">
+        React • Tailwind CSS • Vite
+      </p>
+
+      <p className="text-zinc-400">
+        A modern portfolio website showcasing my projects,
+        photography, travel experiences, and personal brand.
+      </p>
+    </div>
+  </div>
+</section>
+<section
+  id="photography"
+  className="mx-auto max-w-6xl px-6 py-32 scroll-mt-24"
+>
+  <div className="mb-12">
+    <p className="mb-3 text-[#D4A574]">PHOTOGRAPHY</p>
+
+    <h2 className="max-w-3xl text-4xl font-bold leading-tight">
+      Capturing moments, stories, and perspectives through photography.
+    </h2>
+  </div>
+
+  <div className="grid gap-6 md:grid-cols-3">
+    <div className="aspect-square rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center text-zinc-500">
+      Photo 1
+    </div>
+
+    <div className="aspect-square rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center text-zinc-500">
+      Photo 2
+    </div>
+
+    <div className="aspect-square rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center text-zinc-500">
+      Photo 3
+    </div>
+
+    <div className="aspect-square rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center text-zinc-500">
+      Photo 4
+    </div>
+
+    <div className="aspect-square rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center text-zinc-500">
+      Photo 5
+    </div>
+
+    <div className="aspect-square rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center text-zinc-500">
+      Photo 6
+    </div>
+  </div>
+</section>
+<section
+  id="travel"
+  className="mx-auto max-w-6xl px-6 py-32 scroll-mt-24"
+>
+  <div className="mb-12">
+    <p className="mb-3 text-[#D4A574]">FIEA</p>
+
+    <h2 className="max-w-3xl text-4xl font-bold leading-tight">
+      Exploring the world through travel, storytelling, and creativity.
+    </h2>
+  </div>
+
+  <div className="grid gap-8 md:grid-cols-2">
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
+      <h3 className="mb-4 text-2xl font-semibold">
+        Travel Stories
+      </h3>
+
+      <p className="text-zinc-400">
+        Through Fiea, I document experiences, destinations, and
+        memorable moments from my travels, sharing stories and
+        perspectives from around the world.
+      </p>
+    </div>
+
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
+      <h3 className="mb-4 text-2xl font-semibold">
+        Creative Projects
+      </h3>
+
+      <p className="text-zinc-400">
+        Combining photography, design, and storytelling to create
+        engaging content that inspires curiosity and exploration.
+      </p>
+    </div>
+  </div>
+</section>
+<section
+  id="contact"
+  className="mx-auto max-w-6xl px-6 py-32 scroll-mt-24"
+>
+  <div className="mb-12 text-center">
+    <p className="mb-3 text-[#D4A574]">CONTACT</p>
+
+    <h2 className="mb-6 text-4xl font-bold">
+      Let's connect.
+    </h2>
+
+    <p className="mx-auto max-w-2xl text-zinc-400">
+      Whether it's web development, photography, travel content,
+      or creative collaboration, I'd love to hear from you.
+    </p>
+  </div>
+
+  <div className="flex flex-col items-center gap-4">
+    <a
+      href="mailto:raffifuadhilmy"
+      className="rounded-xl border border-white/10 bg-white/5 px-6 py-4 transition hover:bg-white/10"
+    >
+      Email Me
+    </a>
+
+    <a
+      href="https://github.com/vodkalemontwist"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="rounded-xl border border-white/10 bg-white/5 px-6 py-4 transition hover:bg-white/10"
+    >
+      GitHub
+    </a>
+  </div>
+</section>
+<footer className="border-t border-white/10 py-8 text-center text-zinc-500">
+  © 2026 Raffi Fuad Hilmy · Built with React & Tailwind CSS
+</footer>
   </div>
   
   );

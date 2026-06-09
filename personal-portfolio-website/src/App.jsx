@@ -1,15 +1,24 @@
 import profile from "./assets/profile2.jpg";
 
+import photo1 from "./assets/photography/photo1.jpg";
+import photo2 from "./assets/photography/photo2.jpg";
+import photo3 from "./assets/photography/photo3.jpg";
+import photo4 from "./assets/photography/photo4.jpg";
+import photo5 from "./assets/photography/photo5.jpg";
+import photo6 from "./assets/photography/photo6.jpg";
+
 function App() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navbar */}
       <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <h1 className="text-xl font-bold text-[#D4A574]">
+          <a
+            href="#"
+            className="text-xl font-bold text-[#D4A574]"
+            >
             Fiea
-          </h1>
-
+          </a>
           <div className="hidden gap-6 md:flex">
             <a href="#about" className="text-zinc-400 hover:text-white transition">
               About
@@ -33,7 +42,7 @@ function App() {
       {/* Hero */}
       <section className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
 
-  <div className="relative mb-8">
+  <div className="mt-8 flex flex-col gap-4 sm:flex-row">
     <div className="absolute inset-0 rounded-full bg-[#D4A574]/20 blur-3xl" />
 
     <img
@@ -135,19 +144,38 @@ function App() {
   </div>
 
   <div className="grid gap-6 md:grid-cols-2">
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:border-[#D4A574]/50 hover:bg-white/10">
       <h3 className="mb-2 text-2xl font-semibold">
-        Personal Portfolio Website
-      </h3>
+  Personal Portfolio Website
+</h3>
 
-      <p className="mb-4 text-sm text-[#D4A574]">
-        React • Tailwind CSS • Vite
-      </p>
+<div className="mb-4 flex flex-wrap gap-2">
+  <span className="rounded-full bg-[#D4A574]/20 px-3 py-1 text-sm text-[#D4A574]">
+    React
+  </span>
 
-      <p className="text-zinc-400">
-        A modern portfolio website showcasing my projects,
-        photography, travel experiences, and personal brand.
-      </p>
+  <span className="rounded-full bg-[#D4A574]/20 px-3 py-1 text-sm text-[#D4A574]">
+    Tailwind CSS
+  </span>
+
+  <span className="rounded-full bg-[#D4A574]/20 px-3 py-1 text-sm text-[#D4A574]">
+    Vite
+  </span>
+</div>
+
+<p className="mb-6 text-zinc-400">
+  A modern portfolio website showcasing my projects,
+  photography, travel experiences, and personal brand.
+</p>
+
+<a
+  href="https://github.com/vodkalemontwist/Personal-Portfolio-Website"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block rounded-xl bg-[#D4A574] px-4 py-2 text-black font-medium"
+>
+  View Source
+</a>
     </div>
   </div>
 </section>
@@ -163,31 +191,22 @@ function App() {
     </h2>
   </div>
 
-  <div className="grid gap-6 md:grid-cols-3">
-    <div className="aspect-square rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center text-zinc-500">
-      Photo 1
-    </div>
-
-    <div className="aspect-square rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center text-zinc-500">
-      Photo 2
-    </div>
-
-    <div className="aspect-square rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center text-zinc-500">
-      Photo 3
-    </div>
-
-    <div className="aspect-square rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center text-zinc-500">
-      Photo 4
-    </div>
-
-    <div className="aspect-square rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center text-zinc-500">
-      Photo 5
-    </div>
-
-    <div className="aspect-square rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center text-zinc-500">
-      Photo 6
-    </div>
-  </div>
+<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+  {[photo1, photo2, photo3, photo4, photo5, photo6].map(
+    (photo, index) => (
+      <div
+        key={index}
+        className="group overflow-hidden rounded-2xl border border-white/10"
+      >
+        <img
+          src={photo}
+          alt={`Photography ${index + 1}`}
+          className="w-full object-cover transition duration-500 group-hover:scale-110"
+        />
+      </div>
+    )
+  )}
+</div>
 </section>
 <section
   id="travel"
@@ -245,7 +264,7 @@ function App() {
 
   <div className="flex flex-col items-center gap-4">
     <a
-      href="mailto:raffifuadhilmy"
+      href="mailto:raffifuadhilmy@gmail.com"
       className="rounded-xl border border-white/10 bg-white/5 px-6 py-4 transition hover:bg-white/10"
     >
       Email Me

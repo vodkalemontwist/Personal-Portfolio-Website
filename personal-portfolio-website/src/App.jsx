@@ -1,3 +1,4 @@
+import { useState } from "react";
 import profile from "./assets/profile2.jpg";
 import photo1 from "./assets/photography/photo1.jpg";
 import photo2 from "./assets/photography/photo2.jpg";
@@ -7,6 +8,7 @@ import photo5 from "./assets/photography/photo5.jpg";
 import photo6 from "./assets/photography/photo6.jpg";
 
 function App() {
+  const [selectedImage, setSelectedImage] = useState(null);
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navbar */}
@@ -199,7 +201,8 @@ function App() {
                 <img
                   src={photo}
                   alt={`Photography ${index + 1}`}
-                  className="h-96 w-full object-cover transition duration-500 group-hover:scale-110"
+                  onClick={() => setSelectedImage(photo)}
+                  className="h-96 w-full cursor-pointer object-cover transition duration-500 group-hover:scale-110"
                 />
               </div>
             )
@@ -292,6 +295,18 @@ function App() {
       <footer className="border-t border-white/10 py-8 text-center text-zinc-500">
         © 2026 Raffi Fuad Hilmy · Built with React & Tailwind CSS
       </footer>
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-6"
+          onClick={() => setSelectedImage(null)}
+        >
+          <img
+            src={selectedImage}
+            alt="Preview"
+            className="max-h-[90vh] max-w-[90vw] rounded-2xl"
+          />
+        </div>
+      )}
     </div>
   );
 }

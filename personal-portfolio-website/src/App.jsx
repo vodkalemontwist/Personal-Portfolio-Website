@@ -11,6 +11,7 @@ function App() {
   const photos = [photo1, photo2, photo3, photo4, photo5, photo6];
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
@@ -62,32 +63,51 @@ function App() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a
             href="#"
-            className="text-2xl font-bold text-[#D4A574] tracking-wide"
+            className="text-2xl font-bold text-[#D4A574] tracking-wide hover:opacity-80 transition"
           >
             Fiea
           </a>
+
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-2xl md:hidden"
+          >
+            ☰
+          </button>
+
           <div className="hidden gap-6 md:flex">
-            <a href="#about" className="text-zinc-400 hover:text-[#D4A574] transition duration-300">
+            <a href="#about" className="text-zinc-400 hover:text-[#D4A574] transition-all duration-300 hover:-translate-y-0.5">
               About
             </a>
-            <a href="#projects" className="text-zinc-400 hover:text-[#D4A574] transition duration-300">
+            <a href="#projects" className="text-zinc-400 hover:text-[#D4A574] transition-all duration-300 hover:-translate-y-0.5">
               Projects
             </a>
-            <a href="#photography" className="text-zinc-400 hover:text-[#D4A574] transition duration-300">
+            <a href="#photography" className="text-zinc-400 hover:text-[#D4A574] transition-all duration-300 hover:-translate-y-0.5">
               Photography
             </a>
-            <a href="#travel" className="text-zinc-400 hover:text-[#D4A574] transition duration-300">
+            <a href="#travel" className="text-zinc-400 hover:text-[#D4A574] transition-all duration-300 hover:-translate-y-0.5">
               Travel
             </a>
-            <a href="#contact" className="text-zinc-400 hover:text-[#D4A574] transition duration-300">
+            <a href="#contact" className="text-zinc-400 hover:text-[#D4A574] transition-all duration-300 hover:-translate-y-0.5">
               Contact
             </a>
           </div>
+          
+          {menuOpen && (
+            <div className="flex flex-col border-t border-white/10 bg-black md:hidden">
+              <a href="#about" className="p-4">About</a>
+              <a href="#projects" className="p-4">Projects</a>
+              <a href="#photography" className="p-4">Photography</a>
+              <a href="#travel" className="p-4">Travel</a>
+              <a href="#contact" className="p-4">Contact</a>
+            </div>
+          )}
+
         </div>
       </nav>
 
       {/* Hero */}
-      <section className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
+      <section className="flex min-h-screen flex-col items-center justify-center px-6 pt-24 text-center">
         <div className="relative mb-8">
           <div className="absolute inset-0 rounded-full bg-[#D4A574]/20 blur-3xl" />
 
@@ -97,8 +117,12 @@ function App() {
             className="relative h-64 w-64 rounded-full object-cover border border-white/20"
           />
         </div>
-        <p className="mb-6 text-[#D4A574]">
+        <p className="mb-8 text-[#D4A574]">
           Developer • Photographer • Traveler
+        </p>
+
+        <p className="mt-4 text-sm text-zinc-400 md:text-base">
+          Building experiences through technology, photography, and travel.
         </p>
 
         <h1 className="mb-4 text-5xl font-bold md:text-7xl">
@@ -107,10 +131,9 @@ function App() {
 
         <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-[#D4A574]" />
 
-        <p className="max-w-xl text-lg text-zinc-400">
-          Creating digital experiences through code, photography, and travel
-          storytelling. Exploring the intersection of technology, creativity,
-          and adventure.
+        <p className="max-w-2xl text-lg leading-8 text-zinc-400">
+          Developer, photographer, and traveler documenting experiences,
+          building digital products, and sharing stories through the Fiea brand.
         </p>
 
         <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -127,6 +150,9 @@ function App() {
           >
             Explore
           </a>
+        </div>
+        <div className="mt-16 animate-bounce text-2xl text-zinc-500">
+          ↓
         </div>
       </section>
       <section
@@ -268,7 +294,7 @@ function App() {
                 React
               </span>
             </div>
-            
+
             <p className="mb-6 text-zinc-400">
               A curated collection of automotive, travel, and lifestyle photography presented through an interactive gallery experience.
             </p>
@@ -321,27 +347,40 @@ function App() {
           </h2>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2">
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10">
+            <div className="mb-4 text-3xl">🌍</div>
+
             <h3 className="mb-4 text-2xl font-semibold">
               Travel Stories
             </h3>
 
             <p className="text-zinc-400">
-              Through Fiea, I document experiences, destinations, and
-              memorable moments from my travels, sharing stories and
-              perspectives from around the world.
+              Documenting destinations, cultures, and memorable experiences through photography and storytelling.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
+          <div className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10">
+            <div className="mb-4 text-3xl">📷</div>
+
             <h3 className="mb-4 text-2xl font-semibold">
-              Creative Projects
+              Photography Journeys
             </h3>
 
             <p className="text-zinc-400">
-              Combining photography, design, and storytelling to create
-              engaging content that inspires curiosity and exploration.
+              Capturing landscapes, architecture, automotive culture, and everyday moments from around the world.
+            </p>
+          </div>
+
+          <div className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10">
+            <div className="mb-4 text-3xl">✨</div>
+
+            <h3 className="mb-4 text-2xl font-semibold">
+              Fiea Brand
+            </h3>
+
+            <p className="text-zinc-400">
+              Building a personal travel and creative brand focused on exploration, visual storytelling, and authentic experiences.
             </p>
           </div>
         </div>
@@ -364,37 +403,48 @@ function App() {
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-4">
+        <div className="grid gap-4 md:grid-cols-3">
 
           <a
             href="mailto:raffifuadhilmy@gmail.com"
-            className="w-full max-w-sm rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-center transition hover:border-[#D4A574]/50 hover:bg-white/10"
-          >
-            📧 Email
+            className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center transition duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10">
+            <div className="text-3xl mb-3">📧</div>
+            <h3 className="mb-2 text-xl font-semibold">Email</h3>
+            <p className="text-sm text-zinc-400">
+              Get in touch for collaborations.
+            </p>
           </a>
 
           <a
             href="https://instagram.com/fieaiea"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full max-w-sm rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-center transition hover:border-[#D4A574]/50 hover:bg-white/10"
+            className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center transition duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10"
           >
-            📸 Instagram
+            <div className="text-3xl mb-3">📸</div>
+            <h3 className="mb-2 text-xl font-semibold">Instagram</h3>
+            <p className="text-sm text-zinc-400">
+              Travel and photography content.
+            </p>
           </a>
 
           <a
             href="https://github.com/vodkalemontwist"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full max-w-sm rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-center transition hover:border-[#D4A574]/50 hover:bg-white/10"
+            className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center transition duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10"
           >
-            💻 GitHub
+            <div className="text-3xl mb-3">💻</div>
+            <h3 className="mb-2 text-xl font-semibold">GitHub</h3>
+            <p className="text-sm text-zinc-400">
+              Explore my development projects.
+            </p>
           </a>
 
         </div>
       </section>
-      <footer className="border-t border-white/10 py-8 text-center text-zinc-500">
-        © 2026 Raffi Fuad Hilmy · Built with React & Tailwind CSS
+      <footer className="border-t border-white/10 py-8 text-center text-sm text-zinc-500">
+        © 2026 Raffi Fuad Hilmy. Building experiences through technology, photography, and travel.
       </footer>
       {
         selectedImage && (

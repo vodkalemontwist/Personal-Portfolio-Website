@@ -1,4 +1,10 @@
 import { useState, useEffect } from "react";
+import {
+  FaGithub,
+  FaInstagram,
+  FaEnvelope
+} from "react-icons/fa";
+import { motion } from "framer-motion";
 import profile from "./assets/profile2.jpg";
 import photo1 from "./assets/photography/photo1.jpg";
 import photo2 from "./assets/photography/photo2.jpg";
@@ -6,9 +12,19 @@ import photo3 from "./assets/photography/photo3.jpg";
 import photo4 from "./assets/photography/photo4.jpg";
 import photo5 from "./assets/photography/photo5.jpg";
 import photo6 from "./assets/photography/photo6.jpg";
+import portfolioPreview from "./assets/projects/portfolio-preview.jpg";
+import fieaPreview from "./assets/projects/fiea-preview.jpg";
+import photographyPreview from "./assets/projects/photography-preview.jpg";
+
+const photos = [photo1, photo2, photo3, photo4, photo5, photo6];
 
 function App() {
-  const photos = [photo1, photo2, photo3, photo4, photo5, photo6];
+  const fadeInUp = {
+    initial: { opacity: 0, y: 40 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6 },
+  };
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -57,12 +73,14 @@ function App() {
     };
   }, [selectedImage]);
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div
+      id="top"
+      className="min-h-screen bg-black text-white"
+    >
       {/* Navbar */}
       <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a
-            href="#"
+          <a href="#top"
             className="text-2xl font-bold text-[#D4A574] tracking-wide hover:opacity-80 transition"
           >
             Fiea
@@ -92,14 +110,44 @@ function App() {
               Contact
             </a>
           </div>
-          
+
           {menuOpen && (
             <div className="flex flex-col border-t border-white/10 bg-black md:hidden">
-              <a href="#about" className="p-4">About</a>
-              <a href="#projects" className="p-4">Projects</a>
-              <a href="#photography" className="p-4">Photography</a>
-              <a href="#travel" className="p-4">Travel</a>
-              <a href="#contact" className="p-4">Contact</a>
+              <a
+                href="#about"
+                className="p-4"
+                onClick={() => setMenuOpen(false)}
+              >
+                About
+              </a>
+              <a
+                href="#projects"
+                className="p-4"
+                onClick={() => setMenuOpen(false)}
+              >
+                Projects
+              </a>
+              <a
+                href="#photography"
+                className="p-4"
+                onClick={() => setMenuOpen(false)}
+              >
+                Photography
+              </a>
+              <a
+                href="#travel"
+                className="p-4"
+                onClick={() => setMenuOpen(false)}
+              >
+                Travel
+              </a>
+              <a
+                href="#contact"
+                className="p-4"
+                onClick={() => setMenuOpen(false)}
+              >
+                Contact
+              </a>
             </div>
           )}
 
@@ -107,7 +155,12 @@ function App() {
       </nav>
 
       {/* Hero */}
-      <section className="flex min-h-screen flex-col items-center justify-center px-6 pt-24 text-center">
+      <motion.section
+        className="flex min-h-screen flex-col items-center justify-center px-6 pt-24 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <div className="relative mb-8">
           <div className="absolute inset-0 rounded-full bg-[#D4A574]/20 blur-3xl" />
 
@@ -128,6 +181,11 @@ function App() {
         <h1 className="mb-4 text-5xl font-bold md:text-7xl">
           Raffi Fuad Hilmy
         </h1>
+
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#D4A574]/30 bg-[#D4A574]/10 px-4 py-2 text-sm text-[#D4A574]">
+          <span className="h-2 w-2 rounded-full bg-[#D4A574]"></span>
+          Available for collaborations
+        </div>
 
         <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-[#D4A574]" />
 
@@ -154,10 +212,11 @@ function App() {
         <div className="mt-16 animate-bounce text-2xl text-zinc-500">
           ↓
         </div>
-      </section>
-      <section
+      </motion.section>
+      <motion.section
         id="about"
         className="mx-auto max-w-6xl px-6 py-32 scroll-mt-24"
+        {...fadeInUp}
       >
         <div className="mb-12">
           <p className="mb-3 text-[#D4A574]">ABOUT ME</p>
@@ -202,10 +261,11 @@ function App() {
             ))}
           </div>
         </div>
-      </section>
-      <section
+      </motion.section>
+      <motion.section
         id="projects"
         className="mx-auto max-w-6xl px-6 py-32 scroll-mt-24"
+        {...fadeInUp}
       >
         <div className="mb-12">
           <p className="mb-3 text-[#D4A574]">PROJECTS</p>
@@ -215,13 +275,22 @@ function App() {
           </h2>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <a
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <motion.a
             href="https://github.com/vodkalemontwist/Personal-Portfolio-Website"
             target="_blank"
             rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.0 }}
             className="block rounded-2xl border border-white/10 bg-white/5 p-6 transition duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10"
           >
+            <img
+              src={portfolioPreview}
+              alt="Portfolio Website Preview"
+              className="mb-5 h-48 w-full rounded-xl object-cover border border-white/10 shadow-lg"
+            />
             <h3 className="mb-2 text-2xl font-semibold">
               Personal Portfolio Website
             </h3>
@@ -244,12 +313,21 @@ function App() {
               A modern portfolio website showcasing my projects,
               photography, travel experiences, and personal brand.
             </p>
-          </a>
+          </motion.a>
 
-          <a
+          <motion.a
             href="#travel"
-            className="block rounded-2xl border border-white/10 bg-white/5 p-6 transition duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10"
           >
+            <img
+              src={fieaPreview}
+              alt="Fiea Travel Brand Preview"
+              className="mb-5 h-48 w-full rounded-xl object-cover border border-white/10 shadow-lg"
+            />
             <h3 className="mb-2 text-2xl font-semibold">
               Fiea Travel Brand
             </h3>
@@ -271,12 +349,21 @@ function App() {
             <p className="mb-6 text-zinc-400">
               A personal travel and storytelling brand focused on documenting journeys, photography, and creative experiences through digital content.
             </p>
-          </a>
+          </motion.a>
 
-          <a
+          <motion.a
             href="#photography"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             className="block rounded-2xl border border-white/10 bg-white/5 p-6 transition duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10"
           >
+            <img
+              src={photographyPreview}
+              alt="Photography Showcase Preview"
+              className="mb-5 h-48 w-full rounded-xl border border-white/10 object-cover shadow-lg"
+            />
             <h3 className="mb-2 text-2xl font-semibold">
               Photography Showcase
             </h3>
@@ -299,12 +386,13 @@ function App() {
               A curated collection of automotive, travel, and lifestyle photography presented through an interactive gallery experience.
             </p>
 
-          </a>
+          </motion.a>
         </div>
-      </section >
-      <section
+      </motion.section>
+      <motion.section
         id="photography"
         className="mx-auto max-w-6xl px-6 py-32 scroll-mt-24"
+        {...fadeInUp}
       >
         <div className="mb-12">
           <p className="mb-3 text-[#D4A574]">PHOTOGRAPHY</p>
@@ -317,9 +405,16 @@ function App() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {photos.map(
             (photo, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="group overflow-hidden rounded-2xl border border-white/10"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.1,
+                }}
+                className="group relative overflow-hidden rounded-2xl border border-white/10"
               >
                 <img
                   src={photo}
@@ -330,14 +425,21 @@ function App() {
                   }}
                   className="h-96 w-full cursor-pointer object-cover transition duration-500 group-hover:scale-110"
                 />
-              </div>
+
+                <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition duration-300 group-hover:opacity-100">
+                  <span className="text-lg font-medium text-white">
+                    View Photo
+                  </span>
+                </div>
+              </motion.div>
             )
           )}
         </div>
-      </section>
-      <section
+      </motion.section>
+      <motion.section
         id="travel"
         className="mx-auto max-w-6xl px-6 py-32 scroll-mt-24"
+        {...fadeInUp}
       >
         <div className="mb-12">
           <p className="mb-3 text-[#D4A574]">FIEA</p>
@@ -348,7 +450,13 @@ function App() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0 }}
+            className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10"
+          >
             <div className="mb-4 text-3xl">🌍</div>
 
             <h3 className="mb-4 text-2xl font-semibold">
@@ -358,9 +466,15 @@ function App() {
             <p className="text-zinc-400">
               Documenting destinations, cultures, and memorable experiences through photography and storytelling.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10"
+          >
             <div className="mb-4 text-3xl">📷</div>
 
             <h3 className="mb-4 text-2xl font-semibold">
@@ -370,9 +484,15 @@ function App() {
             <p className="text-zinc-400">
               Capturing landscapes, architecture, automotive culture, and everyday moments from around the world.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10"
+          >
             <div className="mb-4 text-3xl">✨</div>
 
             <h3 className="mb-4 text-2xl font-semibold">
@@ -382,13 +502,13 @@ function App() {
             <p className="text-zinc-400">
               Building a personal travel and creative brand focused on exploration, visual storytelling, and authentic experiences.
             </p>
-          </div>
+          </motion.div>
         </div>
-
-      </section>
-      <section
+      </motion.section >
+      <motion.section
         id="contact"
         className="mx-auto max-w-6xl px-6 py-32 scroll-mt-24"
+        {...fadeInUp}
       >
         <div className="mb-12 text-center">
           <p className="mb-3 text-[#D4A574]">CONTACT</p>
@@ -405,44 +525,63 @@ function App() {
 
         <div className="grid gap-4 md:grid-cols-3">
 
-          <a
+          <motion.a
             href="mailto:raffifuadhilmy@gmail.com"
-            className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center transition duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10">
-            <div className="text-3xl mb-3">📧</div>
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0 }}
+            className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center transition duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10"
+          >
+            <div className="mb-3 flex justify-center">
+              <FaEnvelope size={32} className="text-[#D4A574]" />
+            </div>
             <h3 className="mb-2 text-xl font-semibold">Email</h3>
             <p className="text-sm text-zinc-400">
               Get in touch for collaborations.
             </p>
-          </a>
+          </motion.a>
 
-          <a
+          <motion.a
             href="https://instagram.com/fieaiea"
             target="_blank"
             rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
             className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center transition duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10"
           >
-            <div className="text-3xl mb-3">📸</div>
+            <div className="mb-3 flex justify-center">
+              <FaInstagram size={32} className="text-[#D4A574]" />
+            </div>
             <h3 className="mb-2 text-xl font-semibold">Instagram</h3>
             <p className="text-sm text-zinc-400">
               Travel and photography content.
             </p>
-          </a>
+          </motion.a>
 
-          <a
+          <motion.a
             href="https://github.com/vodkalemontwist"
             target="_blank"
             rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center transition duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10"
           >
-            <div className="text-3xl mb-3">💻</div>
+            <div className="mb-3 flex justify-center">
+              <FaGithub size={32} className="text-[#D4A574]" />
+            </div>
             <h3 className="mb-2 text-xl font-semibold">GitHub</h3>
             <p className="text-sm text-zinc-400">
               Explore my development projects.
             </p>
-          </a>
+          </motion.a>
 
         </div>
-      </section>
+      </motion.section>
       <footer className="border-t border-white/10 py-8 text-center text-sm text-zinc-500">
         © 2026 Raffi Fuad Hilmy. Building experiences through technology, photography, and travel.
       </footer>

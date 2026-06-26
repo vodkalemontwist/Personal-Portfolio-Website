@@ -164,7 +164,7 @@ const projects = [
   {
     title: "Wiesender Redesign",
     status: "Redesign Concept",
-    href: "https://github.com/vodkalemontwist/wiesender-redesign",
+    href: "https://wiesender-redesign.vercel.app",
     external: true,
     description:
       "A responsive website redesign concept for Wiesender, focused on cleaner product presentation, modern layout, and improved user experience.",

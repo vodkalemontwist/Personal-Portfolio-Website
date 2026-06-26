@@ -27,7 +27,6 @@ import photo4 from "./assets/optimized/photography/photo4.jpg";
 import photo5 from "./assets/optimized/photography/photo5.jpg";
 import photo6 from "./assets/optimized/photography/photo6.jpg";
 import portfolioPreview from "./assets/optimized/projects/portfolio-preview.jpg";
-import fieaPreview from "./assets/optimized/projects/fiea-preview.jpg";
 import photographyPreview from "./assets/optimized/projects/photography-preview.jpg";
 import wiesenderRedesign from "./assets/projects/wiesender-redesign.png";
 
@@ -136,19 +135,6 @@ const projects = [
     action: "View Repository",
   },
   {
-    title: "Fiea Travel Brand",
-    status: "Creative Brand",
-    href: "#travel",
-    image: fieaPreview,
-    imageAlt: "Fiea Travel Brand Preview",
-    imageWidth: 1200,
-    imageHeight: 800,
-    tags: ["Content Creation", "Photography", "Branding"],
-    description:
-      "A travel and storytelling direction for the Fiea brand, combining photography, creative identity, and exploration.",
-    action: "Explore Travel",
-  },
-  {
     title: "Photography Showcase",
     status: "Gallery Feature",
     href: "#photography",
@@ -174,6 +160,10 @@ const projects = [
     imageHeight: 1562,
     tags: ["React", "Tailwind CSS", "UX Redesign"],
     action: "View Repository",
+  },
+  {
+    title: "Next Project",
+    empty: true,
   },
 ];
 
@@ -605,59 +595,78 @@ function App() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project, index) => (
-              <motion.a
-                key={project.title}
-                href={project.href}
-                target={project.external ? "_blank" : undefined}
-                rel={project.external ? "noopener noreferrer" : undefined}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/30 transition duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A574]"
-              >
-                <div className="relative mb-5 overflow-hidden rounded-xl border border-white/10 shadow-lg">
-                  <img
-                    src={project.image}
-                    alt={project.imageAlt}
-                    width={project.imageWidth}
-                    height={project.imageHeight}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
-                  />
+            {projects.map((project, index) => {
+              if (project.empty) {
+                return (
+                  <motion.div
+                    key={project.title}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.15 }}
+                    className="flex min-h-[420px] h-full items-center justify-center rounded-2xl border border-dashed border-white/15 bg-white/[0.03] p-6 text-center shadow-lg shadow-black/20"
+                  >
+                    <h3 className="text-2xl font-semibold text-zinc-500">
+                      {project.title}
+                    </h3>
+                  </motion.div>
+                );
+              }
 
-                  <span className="absolute left-3 top-3 rounded-full border border-white/10 bg-black/70 px-3 py-1 text-xs font-medium text-[#D4A574] backdrop-blur-sm">
-                    {project.status}
-                  </span>
-                </div>
+              return (
+                <motion.a
+                  key={project.title}
+                  href={project.href}
+                  target={project.external ? "_blank" : undefined}
+                  rel={project.external ? "noopener noreferrer" : undefined}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.15 }}
+                  className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/30 transition duration-300 hover:-translate-y-2 hover:border-[#D4A574]/50 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A574]"
+                >
+                  <div className="relative mb-5 overflow-hidden rounded-xl border border-white/10 shadow-lg">
+                    <img
+                      src={project.image}
+                      alt={project.imageAlt}
+                      width={project.imageWidth}
+                      height={project.imageHeight}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
+                    />
 
-                <h3 className="mb-3 text-2xl font-semibold">
-                  {project.title}
-                </h3>
-
-                <div className="mb-4 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-[#D4A574]/20 px-3 py-1 text-sm text-[#D4A574]"
-                    >
-                      {tag}
+                    <span className="absolute left-3 top-3 rounded-full border border-white/10 bg-black/70 px-3 py-1 text-xs font-medium text-[#D4A574] backdrop-blur-sm">
+                      {project.status}
                     </span>
-                  ))}
-                </div>
+                  </div>
 
-                <p className="mb-6 flex-1 leading-7 text-zinc-400">
-                  {project.description}
-                </p>
+                  <h3 className="mb-3 text-2xl font-semibold">
+                    {project.title}
+                  </h3>
 
-                <span className="inline-flex items-center gap-2 text-sm font-medium text-[#D4A574] transition group-hover:gap-3">
-                  {project.action}
-                  <FaArrowRight aria-hidden="true" />
-                </span>
-              </motion.a>
-            ))}
+                  <div className="mb-4 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-[#D4A574]/20 px-3 py-1 text-sm text-[#D4A574]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <p className="mb-6 flex-1 leading-7 text-zinc-400">
+                    {project.description}
+                  </p>
+
+                  <span className="inline-flex items-center gap-2 text-sm font-medium text-[#D4A574] transition group-hover:gap-3">
+                    {project.action}
+                    <FaArrowRight aria-hidden="true" />
+                  </span>
+                </motion.a>
+              );
+            })}
           </div>
         </motion.section>
         <motion.section

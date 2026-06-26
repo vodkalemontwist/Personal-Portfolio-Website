@@ -2,18 +2,43 @@
 
 html {
   background: #000;
+  color-scheme: dark;
   scroll-behavior: smooth;
 }
 
 body {
+  min-width: 320px;
   background: #000;
+  overflow-x: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
 }
 
 ::selection {
   background: rgba(212, 165, 116, 0.35);
   color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid #050505;
+  border-radius: 999px;
+  background: rgba(212, 165, 116, 0.7);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4a574;
 }
 
 @media (prefers-reduced-motion: reduce) {

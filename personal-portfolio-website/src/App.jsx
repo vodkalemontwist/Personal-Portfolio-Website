@@ -163,12 +163,18 @@ const projects = [
   },
   {
     title: "Wiesender Redesign",
+    status: "Redesign Concept",
+    href: "https://github.com/vodkalemontwist/wiesender-redesign",
+    external: true,
     description:
       "A responsive website redesign concept for Wiesender, focused on cleaner product presentation, modern layout, and improved user experience.",
     image: wiesenderRedesign,
-    github: "https://github.com/vodkalemontwist/wiesender-redesign",
-    live: "https://github.com/vodkalemontwist/wiesender-redesign",
-  }
+    imageAlt: "Wiesender Redesign Preview",
+    imageWidth: 2880,
+    imageHeight: 1562,
+    tags: ["React", "Tailwind CSS", "UX Redesign"],
+    action: "View Repository",
+  },
 ];
 
 const travelHighlights = [

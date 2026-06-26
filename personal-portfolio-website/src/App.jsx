@@ -159,7 +159,7 @@ const projects = [
     imageWidth: 2880,
     imageHeight: 1562,
     tags: ["React", "Tailwind CSS", "UX Redesign"],
-    action: "View Repository",
+    action: "View Project",
   },
   {
     title: "Next Project",
